@@ -58,6 +58,7 @@ public class Enemy : MonoBehaviour
     {
         // This is where Singleton shines!
         // Any enemy can easily notify the GameManager
+        GameManager.Instance.EnemyKilled();
 
         Destroy(gameObject);
     }

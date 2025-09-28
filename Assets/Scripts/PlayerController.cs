@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public Transform firePoint1;
     public float fireRate = 0.5f;
     private float nextFireTime = 0f;
 
@@ -63,9 +65,15 @@ public class PlayerController : MonoBehaviour
 
     private void FireBullet()
     {
+        
+        
         if (bulletPrefab && firePoint)
         {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            if (GameManager.Instance.score >= 500)
+            {
+                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            }
         }
 
         // Play shoot sound effect
@@ -77,6 +85,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             // Player hit by enemy - lose a life
+            GameManager.Instance.LoseLife();
      
         }
 

@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-   
-       
+    
+
     public void ExitButton()
     {
         Application.Quit();

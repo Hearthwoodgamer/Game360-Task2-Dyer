@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -74,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void replayLevel()
     {
-        SceneManager.LoadScene("Scene 2 singleton");
+        SceneManager.LoadScene("Level1");
         RestartGame();
     }
     public void CollectiblePickedUp(int value)
