@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public Transform firePoint1;
+    public Transform firePoint2;
+    public Transform firePoint3;    
+    public Transform firePoint4;
     public float fireRate = 0.5f;
     private float nextFireTime = 0f;
 
@@ -72,11 +75,31 @@ public class PlayerController : MonoBehaviour
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             if (GameManager.Instance.score >= 500)
             {
-                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                Instantiate(bulletPrefab, firePoint1.position, firePoint1.rotation);
+                Debug.Log("Extra Bullet");
+                
+            }
+            if (GameManager.Instance.score >= 1000)
+            {
+                Instantiate(bulletPrefab, firePoint2.position, firePoint2.rotation);
+                Debug.Log("Extra Bullet");
+
+            }
+            if (GameManager.Instance.score >= 1500)
+            {
+                Instantiate(bulletPrefab, firePoint3.position, firePoint3.rotation);
+                Debug.Log("Extra Bullet");
+
+            }
+            if (GameManager.Instance.score >= 2000)
+            {
+                Instantiate(bulletPrefab, firePoint4.position, firePoint4.rotation);
+                Debug.Log("Extra Bullet");
+
             }
         }
 
-        // Play shoot sound effect
+        
        
     }
 
