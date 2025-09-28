@@ -13,13 +13,12 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int lives = 3;
     public int enemiesKilled = 0;
-    public int deaths = 0;
+    
 
     [Header("UI References")]
     public Text scoreText;
     public Text livesText;
     public Text enemiesKilledText;
-    public Text deathsText;
     public GameObject gameOverPanel;
 
     private void Awake()
@@ -56,8 +55,8 @@ public class GameManager : MonoBehaviour
 
         if (lives <= 0)
         {
-            deaths += 1;
-            UpdateUI();
+            
+            
             GameOver();
         }
     }

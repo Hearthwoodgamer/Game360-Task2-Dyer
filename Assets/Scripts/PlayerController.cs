@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             FireBullet();
             nextFireTime = Time.time + fireRate;
+            
         }
 
     }
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
         }
 
         
-       
+       audioSource.PlayOneShot(shootSound, Time.time);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -116,6 +117,7 @@ public class PlayerController : MonoBehaviour
         {
             // Player collected an item
             Collectible collectible = other.GetComponent<Collectible>();
+            audioSource.PlayOneShot(CoinSound, Time.time);  
             if (collectible)
             {
                
