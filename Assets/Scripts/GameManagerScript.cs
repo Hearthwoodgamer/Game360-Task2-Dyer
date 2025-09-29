@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -16,9 +15,9 @@ public class GameManager : MonoBehaviour
     
 
     [Header("UI References")]
-    public Text scoreText;
-    public Text livesText;
-    public Text enemiesKilledText;
+    public TMP_Text scoreText;
+    public TMP_Text livesText;
+    public TMP_Text enemiesKilledText;
     public GameObject gameOverPanel;
 
     private void Awake()
@@ -87,7 +86,7 @@ public class GameManager : MonoBehaviour
     {
         if (scoreText) scoreText.text = "Score: " + score;
         if (livesText) livesText.text = "Lives: " + lives;
-        if (enemiesKilledText) enemiesKilledText.text = "Enemies: " + enemiesKilled;
+        if (enemiesKilledText) enemiesKilledText.text = "Kills: " + enemiesKilled;
     }
 
     private void GameOver()
@@ -97,13 +96,43 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f; // Pause the game
     }
 
+    private void DestroyAllGameObjects()
+    {
+        // Destroy all enemies
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+
+        // Destroy all bullets
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach (GameObject bullet in bullets)
+        {
+            Destroy(bullet);
+        }
+
+        // Destroy all collectibles
+        GameObject[] collectibles = GameObject.FindGameObjectsWithTag("Collectible");
+        foreach (GameObject collectible in collectibles)
+        {
+            Destroy(collectible);
+        }
+    }
+
     public void RestartGame()
     {
         score = 0;
         lives = 3;
         enemiesKilled = 0;
+        UpdateUI();
         Time.timeScale = 1f;
         if (gameOverPanel) gameOverPanel.SetActive(false);
-        UpdateUI();
+        // Destroy all enemies, bullets, and collectibles before reloading
+        DestroyAllGameObjects();
+        
+        // Reload the current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 }
