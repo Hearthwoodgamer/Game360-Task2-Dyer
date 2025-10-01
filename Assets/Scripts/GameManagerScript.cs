@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int lives = 3;
     public int enemiesKilled = 0;
+    public int deaths = 0;
     
 
     [Header("UI References")]
     public TMP_Text scoreText;
     public TMP_Text livesText;
     public TMP_Text enemiesKilledText;
+    public TMP_Text deathsText;
     public GameObject gameOverPanel;
 
     private void Awake()
@@ -54,8 +56,9 @@ public class GameManager : MonoBehaviour
 
         if (lives <= 0)
         {
-            
-            
+
+            deaths += 1;
+            UpdateUI();
             GameOver();
         }
     }
@@ -87,6 +90,7 @@ public class GameManager : MonoBehaviour
         if (scoreText) scoreText.text = "Score: " + score;
         if (livesText) livesText.text = "Lives: " + lives;
         if (enemiesKilledText) enemiesKilledText.text = "Kills: " + enemiesKilled;
+        if (deathsText) deathsText.text = "Deaths: " + deaths;
     }
 
     private void GameOver()
