@@ -18,5 +18,5 @@ The pattern is used primarily as a Game Manager that manages most of the game el
 - Objective: get the highest score you can before you die
 
 ## Repository Stats
-- Total Commits: 16commits
+- Total Commits: 21 commits
 - Development Time: 6 hours
